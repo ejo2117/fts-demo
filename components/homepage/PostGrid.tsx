@@ -1,9 +1,10 @@
 import styles from './PostGrid.module.scss';
-const PostGrid = () => {
+const PostGrid = ({ posts }) => {
 	return (
 		<div className={styles.container}>
-			<h1>{'H1'}</h1>
-			<h2>{'H2'}</h2>
+			{/* {posts.map(p => (
+				<h2>{p.title}</h2>
+			))} */}
 		</div>
 	);
 };
