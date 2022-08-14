@@ -8,36 +8,15 @@ import { getAllPostsForHome } from '@lib/api';
 import PostGrid from '@components/homepage/PostGrid';
 import { flattenGraphQLResponse } from '@utils/helpers';
 
-export default function Index({ allPosts, preview }) {
-	const { edges } = allPosts;
-	console.log(allPosts);
-	console.log(edges[0]);
-
-	// console.log(extractGraphQLNodes(allPosts));
-	console.log(flattenGraphQLResponse(edges));
-
-	const heroPost = edges[0]?.node;
-	const morePosts = edges.slice(1);
+export default function Index({ allPosts: { edges }, preview }) {
+	const posts = flattenGraphQLResponse(edges);
 
 	return (
 		<Layout preview={preview}>
 			<Head>
 				<title>UnitedMasters University</title>
 			</Head>
-			{/* <PostGrid /> */}
-			{/* <Container>
-        {heroPost && (
-          <HeroPost
-            title={heroPost.title}
-            coverImage={heroPost.featuredImage}
-            date={heroPost.date}
-            author={heroPost.author}
-            slug={heroPost.slug}
-            excerpt={heroPost.excerpt}
-          />
-        )}
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-      </Container> */}
+			<PostGrid posts={posts} />
 		</Layout>
 	);
 }

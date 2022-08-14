@@ -1,12 +1,8 @@
 const flattenNode = (nodeObj, keysToFlatten: Array<any>) => {
-	console.log('hi', keysToFlatten);
-
 	const output = { ...nodeObj };
 	for (let i = 0; i < keysToFlatten.length; i++) {
 		const k = keysToFlatten[i];
-
 		output[k] = output[k].node;
-		console.log(output[k]);
 	}
 	return output;
 };
@@ -24,7 +20,6 @@ export const flattenGraphQLResponse = graphQLEdges => {
 		let { node } = graphQLEdges[i];
 
 		try {
-			// node = cleanGraphQLResponse(node);
 			const childToExpand = Object.keys(node).find(k => typeof node[k] === 'object' && Object.keys(node[k])[0] === 'edges');
 
 			const keysToFlatten = Object.keys(node).filter(

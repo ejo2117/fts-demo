@@ -1,3 +1,5 @@
+const path = require('path');
+
 if (!process.env.WORDPRESS_API_URL) {
 	throw new Error(`
     Please provide a valid WordPress instance URL.
@@ -15,5 +17,9 @@ module.exports = {
 			'2.gravatar.com',
 			'secure.gravatar.com',
 		],
+	},
+	sassOptions: {
+		includePaths: [path.resolve(__dirname, 'styles')],
+		prependData: `@import 'variables.scss';`,
 	},
 };

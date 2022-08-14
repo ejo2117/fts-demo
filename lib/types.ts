@@ -1,10 +1,10 @@
 type Post = {
-	title: String;
-	excerpt: String;
-	slug: String;
+	title: string;
+	excerpt: string;
+	slug: string;
 	date: Date;
-	featuredImage: Object;
-	author: Object;
+	featuredImage: object;
+	author: object;
 };
 
 export type { Post };
