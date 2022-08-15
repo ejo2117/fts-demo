@@ -8,13 +8,22 @@ type PropTypes = {
 };
 
 const Post = ({ post }: PropTypes) => {
-	const { title, slug, date, featuredImage } = post;
+	const { title, slug, date, featuredImage, excerpt } = post;
 
 	return (
 		<Link href={`/posts/${slug}`}>
 			<a>
 				<div key={title} className={styles.post}>
-					<Image width={'100%'} height={200} src={featuredImage.sourceUrl} alt={`Featured Image for ${title}`} />
+					<div className={styles.imageContainer}>
+						<Image
+							layout='fill'
+							objectFit='cover'
+							src={featuredImage.sourceUrl}
+							alt={`Featured Image for ${title}`}
+						/>
+						<div className={styles.quote}>{'message'}</div>
+					</div>
+
 					<h2>{title}</h2>
 					<div dangerouslySetInnerHTML={{ __html: date.toString() }} />
 				</div>
