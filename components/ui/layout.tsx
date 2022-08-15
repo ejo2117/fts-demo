@@ -1,7 +1,7 @@
 import Alert from './alert';
 import Footer from './footer';
 import Meta from '../posts/meta';
-import Header from './header';
+import Header from './Header';
 
 import styles from './Layout.module.scss';
 

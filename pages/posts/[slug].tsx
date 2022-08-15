@@ -5,7 +5,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Container from '@components/ui/container';
 import PostBody from '@components/posts/post-body';
 import MoreStories from '@components/posts/more-stories';
-import Header from '@components/ui/header';
+import Header from '@components/ui/Header';
 import PostHeader from '@components/posts/post-header';
 import SectionSeparator from '@components/ui/section-separator';
 import Layout from '@components/ui/Layout';

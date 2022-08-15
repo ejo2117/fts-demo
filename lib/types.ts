@@ -3,7 +3,9 @@ type Post = {
 	excerpt: string;
 	slug: string;
 	date: Date;
-	featuredImage: object;
+	featuredImage: {
+		sourceUrl: string;
+	};
 	author: object;
 };
 
