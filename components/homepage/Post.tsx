@@ -2,6 +2,7 @@ import { Post } from '@lib/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './PostGrid.module.scss';
+import Date from '@components/posts/Date';
 
 type PropTypes = {
 	post: Post;
@@ -25,7 +26,7 @@ const Post = ({ post }: PropTypes) => {
 					</div>
 
 					<h2>{title}</h2>
-					<div dangerouslySetInnerHTML={{ __html: date.toString() }} />
+					<Date dateString={date} />
 				</div>
 			</a>
 		</Link>
