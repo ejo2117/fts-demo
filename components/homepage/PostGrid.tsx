@@ -11,7 +11,7 @@ const PostGrid = ({ posts }: PropTypes) => {
 	return (
 		<div className={styles.container}>
 			{posts.map((p, i) => (
-				<div key={p.title}>
+				<div key={p.title} className={styles.post}>
 					<Link href={`/posts/${p.slug}`}>
 						<a dangerouslySetInnerHTML={{ __html: p.title }} />
 					</Link>

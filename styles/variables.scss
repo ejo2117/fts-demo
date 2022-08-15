@@ -1,1 +1,18 @@
-$blue: pink;
+@function rem-calc($size) {
+	$rem-size: calc($size / 16px * 1rem);
+	@return $rem-size;
+}
+
+/* COLORS */
+
+$light-grey: #e9e8eb;
+$dark-grey: #474747;
+
+/* BREAKPOINTS */
+
+$media-sm: rem-calc(576px);
+$media-md: rem-calc(769px);
+$media-lg: rem-calc(992px);
+$media-xl: rem-calc(1024px);
+$media-xxl: rem-calc(1440px);
+$media-xxxl: rem-calc(1600px);
