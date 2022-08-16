@@ -9,3 +9,15 @@
 		padding: 2rem;
 	}
 }
+
+.gridContainer {
+	@extend .container;
+	padding: 0;
+}
+
+.postContainer {
+	@extend .container;
+	padding: 0;
+	// border: 1px solid white;
+	// margin: 0 1rem;
+}

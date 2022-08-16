@@ -9,9 +9,9 @@ export default function Layout({ preview, children }) {
 	return (
 		<>
 			<Meta />
-			<div className={styles.container}>
+			<div className={preview ? styles.gridContainer : styles.container}>
 				<Header />
-				<main>{children}</main>
+				<main className={styles.postContainer}>{children}</main>
 			</div>
 		</>
 	);

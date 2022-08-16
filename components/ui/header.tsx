@@ -3,10 +3,14 @@ import styles from './Header.module.scss';
 
 export default function Header() {
 	return (
-		<h2 className={styles.container}>
-			<Link href='/'>
-				<a className='hover:underline'>UnitedMasters University</a>
-			</Link>
-		</h2>
+		<div className={styles.container}>
+			<h2>
+				<Link href='/'>
+					<a className='hover:underline'>UnitedMasters University</a>
+				</Link>
+			</h2>
+
+			<span className={styles.partnerLink}>VISIT UM</span>
+		</div>
 	);
 }
