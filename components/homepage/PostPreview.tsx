@@ -2,7 +2,7 @@ import { Post } from '@lib/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './PostGrid.module.scss';
-import Date from '@components/posts/Date';
+import Date from '@components/posts/date';
 
 type PropTypes = {
 	post: Post;
