@@ -17,7 +17,10 @@
 	}
 
 	h2 {
-		font-size: 1.25rem;
+		font-size: 1rem;
+	}
+	time {
+		font-size: rem-calc(14px);
 	}
 	transition: 0.5s;
 	transform: scale(calc(0.25 + (var(--shown, 1) * 0.75)));
@@ -58,12 +61,15 @@
 		border: 2px solid black;
 		border-radius: 0.5rem;
 		font-weight: bold;
+		font-size: rem-calc(14px);
 		padding: 0rem 1rem;
 	}
 
-	&:hover {
-		.quote {
-			opacity: 1;
+	@media screen and (min-width: $media-sm) {
+		&:hover {
+			.quote {
+				opacity: 1;
+			}
 		}
 	}
 }

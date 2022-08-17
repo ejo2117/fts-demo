@@ -11,7 +11,7 @@
 	z-index: 1;
 
 	h2 {
-		font-size: 1.25rem;
+		font-size: 1rem;
 	}
 }
 
@@ -31,5 +31,6 @@
 	border-radius: 0.5rem;
 	color: white;
 	font-weight: bold;
+	font-size: rem-calc(14px);
 	padding: 0rem 1rem;
 }

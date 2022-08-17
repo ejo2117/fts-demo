@@ -19,7 +19,6 @@ const PostGrid = ({ posts }) => {
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(handleIntersection);
-		console.log(observer, postRefs);
 
 		postRefs.forEach(({ ref, current }) => {
 			current && observer.observe(current);
@@ -34,10 +33,9 @@ const PostGrid = ({ posts }) => {
 	}, []);
 
 	const handleIntersection = (entries, observer) => {
-		console.log(entries);
 		for (const entry of entries) {
 			entry.target.style.setProperty('--shown', entry.isIntersecting ? 1 : 0);
-			console.log(entry.target.style);
+			entry.isIntersecting && observer.unobserve(entry.target);
 		}
 	};
 
