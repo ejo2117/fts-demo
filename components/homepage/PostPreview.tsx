@@ -22,7 +22,7 @@ const PostPreview = ({ post }: PropTypes) => {
 							src={featuredImage.sourceUrl}
 							alt={`Featured Image for ${title}`}
 						/>
-						<div className={styles.quote}>{'message'}</div>
+						<div className={styles.quote} dangerouslySetInnerHTML={{ __html: excerpt }} />
 						<div className={styles.badge}>CLASS</div>
 					</div>
 
