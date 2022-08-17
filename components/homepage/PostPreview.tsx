@@ -8,7 +8,7 @@ type PropTypes = {
 	post: Post;
 };
 
-const Post = ({ post }: PropTypes) => {
+const PostPreview = ({ post }: PropTypes) => {
 	const { title, slug, date, featuredImage, excerpt } = post;
 
 	return (
@@ -34,4 +34,4 @@ const Post = ({ post }: PropTypes) => {
 	);
 };
 
-export default Post;
+export default PostPreview;
