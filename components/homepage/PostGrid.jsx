@@ -11,6 +11,7 @@ import { v4 as uuid4 } from 'uuid';
 // };
 
 const PostGrid = ({ posts }) => {
+	// TODO - remove this step for launch and just pull straight from WP instead
 	const bigPostList = [...posts, ...posts, ...posts, ...posts, ...posts, ...posts, ...posts];
 
 	const gridRef = useRef(null);

@@ -19,7 +19,7 @@
 	h2 {
 		font-size: 1.25rem;
 	}
-	transition: 0.2s;
+	transition: 0.5s;
 	transform: scale(calc(0.25 + (var(--shown, 1) * 0.75)));
 }
 
