@@ -15,6 +15,10 @@
 	img {
 		max-height: 400px;
 	}
+
+	h2 {
+		font-size: 1.25rem;
+	}
 }
 
 .imageContainer {
@@ -38,6 +42,19 @@
 		justify-content: center;
 
 		z-index: 2;
+	}
+
+	.badge {
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+		z-index: 2;
+		background: white;
+		color: black;
+		border: 2px solid black;
+		border-radius: 0.5rem;
+		font-weight: bold;
+		padding: 0rem 1rem;
 	}
 
 	&:hover {

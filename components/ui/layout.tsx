@@ -10,8 +10,8 @@ export default function Layout({ preview, children }) {
 		<>
 			<Meta />
 			<div className={preview ? styles.gridContainer : styles.container}>
-				<Header />
-				<main className={styles.postContainer}>{children}</main>
+				<Header pageView={preview} />
+				<main className={preview ? styles.gridContainer : styles.postContainer}>{children}</main>
 			</div>
 		</>
 	);

@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import styles from './Header.module.scss';
 
-export default function Header() {
+export default function Header({ pageView = false }) {
+	console.log(`pageView: ${pageView}`);
+
 	return (
-		<div className={styles.container}>
+		<div className={pageView ? styles.containerPage : styles.container}>
 			<h2>
 				<Link href='/'>
 					<a className='hover:underline'>UnitedMasters University</a>

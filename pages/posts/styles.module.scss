@@ -1,10 +1,37 @@
 .postTitle {
-	background: white;
-	color: black;
-	div {
+	background: $dark-grey;
+	color: white;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px 0;
+
+	h2 {
+		font-size: 2rem;
+
 		border-style: solid;
-		border-color: black;
+		border-color: white;
 		border-width: 0 1px;
 		margin: 0 1rem;
+		padding: 0.5rem;
+		// height: 5rem;
+
+		display: flex;
+		align-items: center;
+	}
+}
+
+.imageContainer {
+	width: calc(100% - 2rem);
+	height: 400px;
+	position: relative;
+
+	margin: 0 1rem;
+
+	border-style: solid;
+	border-color: white;
+	border-width: 0 1px;
+
+	> :first-child {
+		margin: 0.5rem !important;
 	}
 }

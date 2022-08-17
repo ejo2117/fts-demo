@@ -23,6 +23,7 @@ const Post = ({ post }: PropTypes) => {
 							alt={`Featured Image for ${title}`}
 						/>
 						<div className={styles.quote}>{'message'}</div>
+						<div className={styles.badge}>CLASS</div>
 					</div>
 
 					<h2>{title}</h2>
