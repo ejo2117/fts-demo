@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import Container from '@components/ui/container';
 import MoreStories from '@components/posts/more-stories';
 import HeroPost from '@components/posts/hero-post';
-import Layout from '@components/ui/Layout';
+import Layout from '@components/ui/layout';
 import { getAllPostsForHome } from '@lib/api';
 import PostGrid from '@components/homepage/PostGrid';
 import { flattenGraphQLResponse } from '@utils/helpers';
