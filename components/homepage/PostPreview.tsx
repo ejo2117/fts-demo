@@ -6,9 +6,10 @@ import Date from '@components/posts/date';
 
 type PropTypes = {
 	post: Post;
+	isClass: Boolean;
 };
 
-const PostPreview = ({ post }: PropTypes) => {
+const PostPreview = ({ post, isClass }: PropTypes) => {
 	const { title, slug, date, featuredImage, excerpt } = post;
 
 	return (
@@ -23,7 +24,7 @@ const PostPreview = ({ post }: PropTypes) => {
 							alt={`Featured Image for ${title}`}
 						/>
 						<div className={styles.quote} dangerouslySetInnerHTML={{ __html: excerpt }} />
-						<div className={styles.badge}>CLASS</div>
+						{isClass && <div className={styles.badge}>CLASS</div>}
 					</div>
 
 					<h2>{title}</h2>

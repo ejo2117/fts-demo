@@ -3,9 +3,9 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
 
-	@media screen and (min-width: $media-lg) {
-		grid-template-columns: 1fr 1fr 1fr;
-	}
+	// @media screen and (min-width: $media-lg) {
+	// 	grid-template-columns: 1fr 1fr 1fr;
+	// }
 }
 
 .post {
@@ -24,6 +24,10 @@
 	}
 	transition: 0.5s;
 	transform: scale(calc(0.25 + (var(--shown, 1) * 0.75)));
+}
+
+.classPreview {
+	grid-column: span 2;
 }
 
 .imageContainer {
@@ -49,6 +53,8 @@
 		padding: 1rem;
 
 		z-index: 2;
+
+		pointer-events: none;
 	}
 
 	.badge {
@@ -66,6 +72,9 @@
 	}
 
 	@media screen and (min-width: $media-sm) {
+		.quote {
+			pointer-events: auto;
+		}
 		&:hover {
 			.quote {
 				opacity: 1;
