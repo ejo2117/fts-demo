@@ -23,7 +23,7 @@
 		font-size: rem-calc(14px);
 	}
 	transition: 0.5s;
-	transform: scale(calc(0.25 + (var(--shown, 1) * 0.75)));
+	transform: translateY(calc(2rem - (var(--shown, 1) * 2rem)));
 }
 
 .classPreview {
