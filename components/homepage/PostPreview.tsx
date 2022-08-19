@@ -20,10 +20,10 @@ const PostPreview = ({ post, isClass }: PropTypes) => {
 						<Image
 							layout='fill'
 							objectFit='cover'
-							src={featuredImage.sourceUrl}
+							src={featuredImage?.sourceUrl}
 							alt={`Featured Image for ${title}`}
 						/>
-						<div className={styles.quote} dangerouslySetInnerHTML={{ __html: excerpt }} />
+						{excerpt && <div className={styles.quote} dangerouslySetInnerHTML={{ __html: excerpt }} />}
 						{isClass && <div className={styles.badge}>CLASS</div>}
 					</div>
 
