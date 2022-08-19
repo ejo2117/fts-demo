@@ -1,7 +1,7 @@
 .container {
 	min-height: 100vh;
 	background-color: $dark-grey;
-	padding: 1rem;
+	padding: 0rem;
 
 	color: white;
 	position: relative;
@@ -20,7 +20,7 @@
 
 .postContainer {
 	@extend .container;
-	padding: 0;
+	padding: 1rem;
 	// border: 1px solid white;
 	// margin: 0 1rem;
 }

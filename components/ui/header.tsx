@@ -3,15 +3,12 @@ import styles from './Header.module.scss';
 import Hamburger from '@components/common/hamburger';
 import { useState } from 'react';
 
-export default function Header({ pageView = false }) {
-	console.log(`pageView: ${pageView}`);
-	const [menuOpen, setMenuOpen] = useState(false);
-
+export default function Header({ pageView = false, menuOpen, setMenuOpen }) {
 	return (
 		<div className={pageView ? styles.containerPage : styles.container}>
 			<h2>
 				<Link href='/'>
-					<a className='hover:underline'>UnitedMasters University</a>
+					<a className={`${menuOpen ? styles.blackText : ''}  hover:underline`}>UnitedMasters University</a>
 				</Link>
 			</h2>
 
