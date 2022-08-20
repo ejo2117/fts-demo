@@ -27,7 +27,7 @@ export default function Post({ post, posts, allCategories, preview }) {
 	}
 
 	return (
-		<Layout preview={true} categories={allCategories.edges}>
+		<Layout preview={true} categories={allCategories?.edges ?? []}>
 			{router.isFallback ? (
 				<PostTitle>Loading…</PostTitle>
 			) : (
