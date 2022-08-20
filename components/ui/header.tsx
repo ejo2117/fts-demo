@@ -13,7 +13,9 @@ export default function Header({ pageView = false, menuOpen, setMenuOpen }) {
 			</h2>
 
 			<div className='flex items-center'>
-				<span className={styles.partnerLink}>VISIT UM</span>
+				<Link href={'https://unitedmasters.com/'}>
+					<a className={styles.partnerLink}>VISIT UM</a>
+				</Link>
 
 				<Hamburger
 					isActive={menuOpen}
