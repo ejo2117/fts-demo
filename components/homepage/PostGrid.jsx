@@ -12,9 +12,9 @@ import { v4 as uuid4 } from 'uuid';
 
 const PostGrid = ({ posts }) => {
 	// TODO - remove this step for launch and just pull straight from WP instead
-	const bigPostList = [...posts, ...posts, ...posts, ...posts, ...posts, ...posts, ...posts];
+	// const bigPostList = [...posts, ...posts, ...posts, ...posts, ...posts, ...posts, ...posts];
 
-	const assignedClasses = bigPostList.map((p, i) => ({ post: p, isClass: i && !((i + 1) % 3) }));
+	const assignedClasses = posts.map((p, i) => ({ post: p, isClass: i && !((i + 1) % 3) }));
 
 	const gridRef = useRef(null);
 	const postRefs = assignedClasses.map(p => ({ ref: useRef() }));

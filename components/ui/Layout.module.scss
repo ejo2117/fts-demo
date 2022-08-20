@@ -6,9 +6,9 @@
 	color: white;
 	position: relative;
 
-	@media screen and (min-width: $media-lg) {
-		padding: 2rem;
-	}
+	// @media screen and (min-width: $media-lg) {
+	// 	padding: 2rem;
+	// }
 }
 
 .gridContainer {
@@ -16,6 +16,10 @@
 	// background-color: white;
 	// color: black;
 	padding: 0;
+}
+
+.addTop {
+	top: 4rem;
 }
 
 .postContainer {

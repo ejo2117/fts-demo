@@ -4,15 +4,15 @@ import Container from '@components/ui/container';
 import MoreStories from '@components/posts/more-stories';
 import HeroPost from '@components/posts/hero-post';
 import Layout from '@components/ui/layout';
-import { getAllPostsForHome } from '@lib/api';
+import { getAllPostsForHome, getCategories } from '@lib/api';
 import PostGrid from '@components/homepage/PostGrid';
 import { flattenGraphQLResponse } from '@utils/helpers';
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges }, allCategories, preview }) {
 	const posts = flattenGraphQLResponse(edges);
 
 	return (
-		<Layout preview={preview}>
+		<Layout preview={preview} categories={allCategories.edges}>
 			<Head>
 				<title>UnitedMasters University</title>
 			</Head>
@@ -23,9 +23,10 @@ export default function Index({ allPosts: { edges }, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 	const allPosts = await getAllPostsForHome(preview);
+	const allCategories = await getCategories();
 
 	return {
-		props: { allPosts, preview },
+		props: { allPosts, allCategories, preview },
 		revalidate: 10,
 	};
 };

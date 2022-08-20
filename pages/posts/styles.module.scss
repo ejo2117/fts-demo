@@ -22,7 +22,8 @@
 
 .imageContainer {
 	width: calc(100% - 2rem);
-	height: 400px;
+	// height: 400px;
+	aspect-ratio: 1.5 / 1;
 	position: relative;
 
 	margin: 0 1rem;

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import Alert from './alert';
 import Footer from './footer';
@@ -8,16 +9,29 @@ import Navigation from './navigation';
 
 import styles from './Layout.module.scss';
 
-export default function Layout({ preview, children }) {
+export default function Layout({ preview, categories, children }) {
+	const router = useRouter();
 	const [menuOpen, setMenuOpen] = useState(false);
+
+	const closeMenu = () => {
+		setMenuOpen(false);
+	};
+
+	useEffect(() => {
+		router.events.on('routeChangeStart', closeMenu);
+
+		return () => {
+			router.events.off('routeChangeStart', closeMenu);
+		};
+	}, [router.events]);
 
 	return (
 		<>
 			<Meta />
 			<div className={preview ? styles.gridContainer : styles.container}>
 				<Header pageView={preview} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-				<Navigation visible={menuOpen} />
-				<main className={preview ? styles.gridContainer : styles.postContainer}>{children}</main>
+				<Navigation visible={menuOpen} categories={categories} />
+				<main className={preview ? `${styles.gridContainer} ${styles.addTop}` : styles.postContainer}>{children}</main>
 			</div>
 		</>
 	);
