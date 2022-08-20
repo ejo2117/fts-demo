@@ -22,17 +22,13 @@
 
 .imageContainer {
 	width: calc(100% - 2rem);
-	// height: 400px;
-	aspect-ratio: 1.5 / 1;
+
 	position: relative;
 
 	margin: 0 1rem;
+	padding: 0.5rem;
 
 	border-style: solid;
 	border-color: white;
 	border-width: 0 1px;
-
-	> :first-child {
-		margin: 0.5rem !important;
-	}
 }

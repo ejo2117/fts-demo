@@ -10,7 +10,7 @@ type PropTypes = {
 };
 
 const PostPreview = ({ post, isClass }: PropTypes) => {
-	const { title, slug, date, featuredImage, excerpt } = post;
+	const { title, slug, date, featuredImage, postSettings, excerpt } = post;
 
 	return (
 		<Link href={`/posts/${slug}`}>
@@ -20,7 +20,7 @@ const PostPreview = ({ post, isClass }: PropTypes) => {
 						<Image
 							layout='fill'
 							objectFit='cover'
-							src={featuredImage?.sourceUrl}
+							src={postSettings?.previewImage?.sourceUrl}
 							alt={`Featured Image for ${title}`}
 						/>
 						{excerpt && <div className={styles.quote} dangerouslySetInnerHTML={{ __html: excerpt }} />}

@@ -73,6 +73,11 @@ export async function getAllPostsForHome(preview) {
                 sourceUrl
               }
             }
+            postSettings {
+              previewImage {
+                sourceUrl
+              }
+            }
             author {
               node {
                 name

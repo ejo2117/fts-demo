@@ -40,16 +40,19 @@ export default function Post({ post, posts, allCategories, preview }) {
 						<div className={styles.postTitle}>
 							<h2>{post.title}</h2>
 						</div>
-						<div className={styles.imageContainer}>
-							<Image
-								width='100%'
-								height={400}
-								layout='fill'
-								objectFit='cover'
-								src={post.featuredImage?.node.sourceUrl}
-								alt={`Featured Image for ${post.title}`}
-							/>
-						</div>
+						{post.featuredImage && (
+							<div className={styles.imageContainer}>
+								<img src={post.featuredImage?.node.sourceUrl} alt={`Featured Image for ${post.title}`} />
+								{/* <Image
+									width='100%'
+									height='100%'
+									// layout='responsive'
+									objectFit='contain'
+									src={post.featuredImage?.node.sourceUrl}
+									alt={`Featured Image for ${post.title}`}
+								/> */}
+							</div>
+						)}
 						<PostBody content={post.content} />
 					</article>
 				</>
