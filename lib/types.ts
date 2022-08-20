@@ -6,6 +6,11 @@ type Post = {
 	featuredImage: {
 		sourceUrl: string;
 	};
+	postSettings: {
+		previewImage: {
+			sourceUrl: string;
+		};
+	};
 	author: object;
 };
 
