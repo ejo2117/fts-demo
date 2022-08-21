@@ -24,7 +24,7 @@ const PostPreview = ({ post, isClass }: PropTypes) => {
 							alt={`Featured Image for ${title}`}
 						/>
 						{excerpt && <div className={styles.quote} dangerouslySetInnerHTML={{ __html: excerpt }} />}
-						{/* {isClass && <div className={styles.badge}>CLASS</div>} */}
+						{post.postSettings.isclass && <div className={styles.badge}>CLASS</div>}
 					</div>
 
 					<h2>{title}</h2>

@@ -7,6 +7,9 @@ type Post = {
 		sourceUrl: string;
 	};
 	postSettings: {
+		isclass: boolean;
+		module: boolean;
+		modules: any;
 		previewImage: {
 			sourceUrl: string;
 		};

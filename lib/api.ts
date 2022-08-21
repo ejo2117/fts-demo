@@ -74,6 +74,14 @@ export async function getAllPostsForHome(preview) {
               }
             }
             postSettings {
+              isclass
+              module
+              modules {
+                ... on Post{
+                  slug
+                  title
+                }
+              }
               previewImage {
                 sourceUrl
               }
@@ -101,7 +109,12 @@ export async function getAllPostsForHome(preview) {
 		}
 	);
 
-	return data?.posts;
+	// TODO - need to add a guard for this filtering, it's a little rough
+	const nonModulePosts = data?.posts.edges.filter(({ node }) => {
+		return !node.postSettings.module;
+	});
+
+	return { edges: nonModulePosts };
 }
 
 export async function getPostAndMorePosts(slug, preview, previewData) {

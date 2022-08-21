@@ -8,6 +8,7 @@ const Navigation = ({ visible, categories }) => {
 		<div className={visible ? styles.containerVisible : styles.container}>
 			<SectionSeparator />
 			{categories.map(({ node }) => {
+				if (node.name === 'Uncategorized') return;
 				if (!node.posts.edges.length) return;
 				const postsInCategory = flattenGraphQLResponse(node.posts.edges);
 				return (
