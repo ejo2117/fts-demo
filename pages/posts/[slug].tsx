@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
@@ -21,6 +22,8 @@ import styles from './styles.module.scss';
 export default function Post({ post, posts, allCategories, preview }) {
 	const router = useRouter();
 	const morePosts = posts?.edges;
+
+	const associatedModules = post?.postSettings?.isclass ? post.postSettings.modules : false;
 
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
@@ -53,7 +56,7 @@ export default function Post({ post, posts, allCategories, preview }) {
 								/> */}
 							</div>
 						)}
-						<PostBody content={post.content} />
+						<PostBody content={post.content} modules={associatedModules} />
 					</article>
 				</>
 			)}

@@ -78,8 +78,10 @@ export async function getAllPostsForHome(preview) {
               module
               modules {
                 ... on Post{
-                  slug
                   title
+                  excerpt
+                  slug
+                  date
                 }
               }
               previewImage {
@@ -141,6 +143,22 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       date
       featuredImage {
         node {
+          sourceUrl
+        }
+      }
+      postSettings {
+        isclass
+        module
+        modules {
+          ... on Post{
+            title
+            excerpt
+            content
+            slug
+            date
+          }
+        }
+        previewImage {
           sourceUrl
         }
       }
