@@ -28,6 +28,7 @@ export default function Post({ post, posts, allCategories, preview }) {
 	const associatedModules = isClass ? post.postSettings.modules : false;
 
 	const [currentModule, setCurrentModule] = useState(0);
+	const [direction, setDirection] = useState(0);
 
 	const bodyTitle = isClass ? associatedModules[currentModule].title : post.title;
 
@@ -48,12 +49,34 @@ export default function Post({ post, posts, allCategories, preview }) {
 		return <ErrorPage statusCode={404} />;
 	}
 
-	const navigateModule = (forward = true) => {
-		let newIndex = forward ? currentModule + 1 : currentModule - 1;
+	const variants = {
+		enter: direction => {
+			return {
+				x: direction ? 300 : -300,
+				opacity: 1,
+			};
+		},
+		center: {
+			zIndex: 1,
+			x: 0,
+			opacity: 1,
+		},
+		exit: direction => {
+			return {
+				zIndex: 0,
+				x: direction ? -300 : 300,
+				opacity: 1,
+			};
+		},
+	};
+
+	const navigateModule = newDirection => {
+		let newIndex = newDirection ? currentModule + 1 : currentModule - 1;
 		newIndex = newIndex < 0 ? 0 : newIndex;
 		newIndex = newIndex >= associatedModules.length ? associatedModules.length - 1 : newIndex;
 
 		setCurrentModule(newIndex);
+		setDirection(newDirection);
 	};
 
 	return (
@@ -83,21 +106,26 @@ export default function Post({ post, posts, allCategories, preview }) {
 								/> */}
 							</div>
 						)}
-						<AnimatePresence>
-							<motion.div
-								key={`page-${currentModule + 1}`}
-								initial={{ x: 300, opacity: 0 }}
-								animate={{ x: 0, opacity: 1 }}
-								exit={{ x: -300, opacity: 0 }}
-							>
-								<PostBody content={bodyContent} />
-							</motion.div>
-						</AnimatePresence>
+						<div className={styles.slides}>
+							<AnimatePresence custom={direction}>
+								<motion.div
+									className={styles.motion}
+									key={`page-${currentModule + 1}`}
+									custom={direction}
+									variants={variants}
+									initial='enter'
+									animate='center'
+									exit='exit'
+								>
+									<PostBody content={bodyContent} />
+								</motion.div>
+							</AnimatePresence>
+						</div>
 						{isClass && (
-							<>
+							<div className={styles.control}>
 								<div onClick={() => navigateModule(false)}>Prev</div>
 								<div onClick={() => navigateModule(true)}>Next</div>
-							</>
+							</div>
 						)}
 					</article>
 				</>
