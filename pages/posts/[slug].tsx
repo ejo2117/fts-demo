@@ -16,6 +16,8 @@ import Tags from '@components/posts/tags';
 import { getAllPostsWithSlug, getCategories, getPostAndMorePosts } from '@lib/api';
 import { CMS_NAME } from '@lib/constants';
 
+import { motion, AnimatePresence } from 'framer-motion';
+
 import Image from 'next/image';
 
 import styles from './styles.module.scss';
@@ -81,9 +83,22 @@ export default function Post({ post, posts, allCategories, preview }) {
 								/> */}
 							</div>
 						)}
-						<PostBody content={bodyContent} modules={associatedModules} />
-						<div onClick={() => navigateModule(false)}>Prev</div>
-						<div onClick={() => navigateModule(true)}>Next</div>
+						<AnimatePresence>
+							<motion.div
+								key={`page-${currentModule + 1}`}
+								initial={{ x: 300, opacity: 0 }}
+								animate={{ x: 0, opacity: 1 }}
+								exit={{ x: -300, opacity: 0 }}
+							>
+								<PostBody content={bodyContent} />
+							</motion.div>
+						</AnimatePresence>
+						{isClass && (
+							<>
+								<div onClick={() => navigateModule(false)}>Prev</div>
+								<div onClick={() => navigateModule(true)}>Next</div>
+							</>
+						)}
 					</article>
 				</>
 			)}
