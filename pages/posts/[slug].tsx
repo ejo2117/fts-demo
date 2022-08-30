@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
@@ -21,13 +22,37 @@ import styles from './styles.module.scss';
 
 export default function Post({ post, posts, allCategories, preview }) {
 	const router = useRouter();
-	const morePosts = posts?.edges;
+	const isClass: boolean = post?.postSettings?.isclass ?? false;
+	const associatedModules = isClass ? post.postSettings.modules : false;
 
-	const associatedModules = post?.postSettings?.isclass ? post.postSettings.modules : false;
+	const [currentModule, setCurrentModule] = useState(0);
+
+	const bodyTitle = isClass ? associatedModules[currentModule].title : post.title;
+
+	const generateBody = () => {
+		return isClass ? associatedModules[currentModule].content : post.content;
+	};
+
+	const [bodyContent, setBodyContent] = useState(generateBody());
+	// const morePosts = posts?.edges;
+
+	// const bodyContent = isClass ? associatedModules[currentModule].content : post.content;
+
+	useEffect(() => {
+		setBodyContent(generateBody());
+	}, [currentModule]);
 
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
+
+	const navigateModule = (forward = true) => {
+		let newIndex = forward ? currentModule + 1 : currentModule - 1;
+		newIndex = newIndex < 0 ? 0 : newIndex;
+		newIndex = newIndex >= associatedModules.length ? associatedModules.length - 1 : newIndex;
+
+		setCurrentModule(newIndex);
+	};
 
 	return (
 		<Layout preview={true} categories={allCategories?.edges ?? []}>
@@ -41,7 +66,7 @@ export default function Post({ post, posts, allCategories, preview }) {
 							<meta property='og:image' content={post.featuredImage?.sourceUrl} />
 						</Head>
 						<div className={styles.postTitle}>
-							<h2>{post.title}</h2>
+							<h2>{bodyTitle}</h2>
 						</div>
 						{post.featuredImage && (
 							<div className={styles.imageContainer}>
@@ -56,7 +81,9 @@ export default function Post({ post, posts, allCategories, preview }) {
 								/> */}
 							</div>
 						)}
-						<PostBody content={post.content} modules={associatedModules} />
+						<PostBody content={bodyContent} modules={associatedModules} />
+						<div onClick={() => navigateModule(false)}>Prev</div>
+						<div onClick={() => navigateModule(true)}>Next</div>
 					</article>
 				</>
 			)}

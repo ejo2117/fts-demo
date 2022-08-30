@@ -127,6 +127,10 @@
 	display: none;
 }
 
+body {
+	background-color: black;
+}
+
 .has-text-align-left {
 	@apply text-left;
 }
