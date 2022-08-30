@@ -107,19 +107,23 @@ export default function Post({ post, posts, allCategories, preview }) {
 							</div>
 						)}
 						<div className={styles.slides}>
-							<AnimatePresence custom={direction}>
-								<motion.div
-									className={styles.motion}
-									key={`page-${currentModule + 1}`}
-									custom={direction}
-									variants={variants}
-									initial='enter'
-									animate='center'
-									exit='exit'
-								>
-									<PostBody content={bodyContent} />
-								</motion.div>
-							</AnimatePresence>
+							{isClass ? (
+								<AnimatePresence custom={direction}>
+									<motion.div
+										className={styles.motion}
+										key={`page-${currentModule + 1}`}
+										custom={direction}
+										variants={variants}
+										initial='enter'
+										animate='center'
+										exit='exit'
+									>
+										<PostBody content={bodyContent} />
+									</motion.div>
+								</AnimatePresence>
+							) : (
+								<PostBody content={bodyContent} />
+							)}
 						</div>
 						{isClass && (
 							<div className={styles.control}>
