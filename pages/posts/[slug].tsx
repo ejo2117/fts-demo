@@ -30,10 +30,10 @@ export default function Post({ post, posts, allCategories, preview }) {
 	const [currentModule, setCurrentModule] = useState(0);
 	const [direction, setDirection] = useState(0);
 
-	const bodyTitle = isClass ? associatedModules[currentModule].title : post.title;
+	const bodyTitle = isClass ? associatedModules[currentModule]?.title : post?.title;
 
 	const generateBody = () => {
-		return isClass ? associatedModules[currentModule].content : post.content;
+		return isClass ? associatedModules[currentModule]?.content : post?.content;
 	};
 
 	const [bodyContent, setBodyContent] = useState(generateBody());
@@ -87,7 +87,7 @@ export default function Post({ post, posts, allCategories, preview }) {
 				<>
 					<article>
 						<Head>
-							<title>{post.title} | UnitedMasters University</title>
+							<title>{post?.title} | UnitedMasters University</title>
 							<meta property='og:image' content={post.featuredImage?.sourceUrl} />
 						</Head>
 						<div className={styles.postTitle}>
@@ -95,7 +95,7 @@ export default function Post({ post, posts, allCategories, preview }) {
 						</div>
 						{post.featuredImage && (
 							<div className={styles.imageContainer}>
-								<img src={post.featuredImage?.node.sourceUrl} alt={`Featured Image for ${post.title}`} />
+								<img src={post.featuredImage?.node.sourceUrl} alt={`Featured Image for ${post?.title}`} />
 								{/* <Image
 									width='100%'
 									height='100%'
