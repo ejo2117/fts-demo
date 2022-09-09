@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
@@ -22,6 +22,13 @@ import Image from 'next/image';
 
 import styles from './styles.module.scss';
 
+const useFirstRender = () => {
+	const ref = useRef(true);
+	const firstRender = ref.current;
+	ref.current = false;
+	return firstRender;
+};
+
 export default function Post({ post, posts, allCategories, preview }) {
 	const router = useRouter();
 	const isClass: boolean = post?.postSettings?.isclass ?? false;
@@ -35,6 +42,8 @@ export default function Post({ post, posts, allCategories, preview }) {
 	const generateBody = () => {
 		return isClass ? associatedModules[currentModule]?.content : post?.content;
 	};
+
+	const isFirstRender = useFirstRender();
 
 	const [bodyContent, setBodyContent] = useState(generateBody());
 	// const morePosts = posts?.edges;
@@ -114,9 +123,10 @@ export default function Post({ post, posts, allCategories, preview }) {
 										key={`page-${currentModule + 1}`}
 										custom={direction}
 										variants={variants}
-										initial='enter'
+										initial={!isFirstRender && 'enter'}
 										animate='center'
 										exit='exit'
+										transition={{ type: 'spring', bounce: 0.4 }}
 									>
 										<PostBody content={bodyContent} />
 									</motion.div>
