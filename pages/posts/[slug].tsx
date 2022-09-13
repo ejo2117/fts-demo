@@ -36,6 +36,7 @@ export default function Post({ post, posts, allCategories, preview }) {
 
 	const [currentModule, setCurrentModule] = useState(0);
 	const [direction, setDirection] = useState(0);
+	const [safeToAnimate, setSafeToAnimate] = useState(true);
 
 	const bodyTitle = isClass ? associatedModules[currentModule]?.title : post?.title;
 
@@ -80,6 +81,8 @@ export default function Post({ post, posts, allCategories, preview }) {
 	};
 
 	const navigateModule = newDirection => {
+		if (!safeToAnimate) return;
+
 		let newIndex = newDirection ? currentModule + 1 : currentModule - 1;
 		newIndex = newIndex < 0 ? 0 : newIndex;
 		newIndex = newIndex >= associatedModules.length ? associatedModules.length - 1 : newIndex;
@@ -127,6 +130,8 @@ export default function Post({ post, posts, allCategories, preview }) {
 										animate='center'
 										exit='exit'
 										transition={{ type: 'spring', bounce: 0.4 }}
+										onAnimationStart={() => setSafeToAnimate(false)}
+										onAnimationComplete={() => setSafeToAnimate(true)}
 									>
 										<PostBody content={bodyContent} />
 									</motion.div>
