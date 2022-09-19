@@ -25,6 +25,7 @@
 	}
 	transition: 0.5s;
 	transform: translateY(calc(2rem - (var(--shown, 1) * 2rem)));
+	opacity: calc(1 * (var(--shown, 1)));
 }
 
 .classPreview {

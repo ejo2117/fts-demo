@@ -3,7 +3,6 @@
 	background-color: $dark-grey;
 	padding: 0rem;
 
-	max-width: $media-sm;
 	margin: auto;
 
 	color: white;
@@ -28,6 +27,12 @@
 .postContainer {
 	@extend .container;
 	padding: 1rem;
+	max-width: $media-sm;
 	// border: 1px solid white;
 	// margin: 0 1rem;
+}
+
+.blurred {
+	filter: blur(8px);
+	transition: 0.3 ease-in;
 }

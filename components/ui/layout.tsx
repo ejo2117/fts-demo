@@ -25,13 +25,20 @@ export default function Layout({ preview, categories, children }) {
 		};
 	}, [router.events]);
 
+	const generateClasses = () => {
+		return [
+			...(preview ? [`${styles.gridContainer}`, `${styles.addTop}`] : [`${styles.postContainer}`]),
+			...(menuOpen ? [`${styles.blurred}`] : ['']),
+		].join(' ');
+	};
+
 	return (
 		<>
 			<Meta />
 			<div className={preview ? styles.gridContainer : styles.container}>
 				<Header pageView={preview} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 				<Navigation visible={menuOpen} categories={categories} />
-				<main className={preview ? `${styles.gridContainer} ${styles.addTop}` : styles.postContainer}>{children}</main>
+				<main className={generateClasses()}>{children}</main>
 			</div>
 		</>
 	);

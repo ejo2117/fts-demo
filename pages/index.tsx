@@ -7,16 +7,18 @@ import Layout from '@components/ui/layout';
 import { getAllPostsForHome, getCategories } from '@lib/api';
 import PostGrid from '@components/homepage/PostGrid';
 import { flattenGraphQLResponse } from '@utils/helpers';
+import { Post } from '@lib/types';
+import Homepage from '@components/homepage/Homepage';
 
 export default function Index({ allPosts: { edges }, allCategories, preview }) {
-	const posts = flattenGraphQLResponse(edges);
+	const posts: Post[] = flattenGraphQLResponse(edges);
 
 	return (
 		<Layout preview={preview} categories={allCategories.edges}>
 			<Head>
 				<title>UnitedMasters University</title>
 			</Head>
-			<PostGrid posts={posts} />
+			<Homepage posts={posts} />
 		</Layout>
 	);
 }
