@@ -5,7 +5,6 @@ import MoreStories from '@components/posts/more-stories';
 import HeroPost from '@components/posts/hero-post';
 import Layout from '@components/ui/layout';
 import { getAllPostsForHome, getCategories } from '@lib/api';
-import PostGrid from '@components/homepage/PostGrid';
 import { flattenGraphQLResponse } from '@utils/helpers';
 import { Post } from '@lib/types';
 import Homepage from '@components/homepage/Homepage';
@@ -18,7 +17,7 @@ export default function Index({ allPosts: { edges }, allCategories, preview }) {
 			<Head>
 				<title>UnitedMasters University</title>
 			</Head>
-			<Homepage posts={posts} />
+			<Homepage posts={posts} categories={allCategories.edges} />
 		</Layout>
 	);
 }

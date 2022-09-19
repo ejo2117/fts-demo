@@ -3,9 +3,16 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
 
+	background: #1f1f1f;
+	padding: 1rem;
+	border-radius: 1.5rem;
+	margin-top: 0.5rem;
 	// @media screen and (min-width: $media-lg) {
 	// 	grid-template-columns: 1fr 1fr 1fr;
 	// }
+}
+
+.container.active {
 }
 
 .post {
@@ -22,6 +29,7 @@
 	}
 	time {
 		font-size: rem-calc(14px);
+		font-weight: 300;
 	}
 	transition: 0.5s;
 	transform: translateY(calc(2rem - (var(--shown, 1) * 2rem)));

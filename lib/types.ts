@@ -17,4 +17,15 @@ type Post = {
 	author: object;
 };
 
-export type { Post };
+type Category = {
+	node: {
+		name: string;
+		posts: {
+			edges: {
+				node: Post;
+			}[];
+		};
+	};
+};
+
+export type { Post, Category };

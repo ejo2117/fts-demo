@@ -8,7 +8,9 @@ export default function Header({ pageView = false, menuOpen, setMenuOpen }) {
 		<div className={pageView ? styles.containerPage : styles.container}>
 			<h2>
 				<Link href='/'>
-					<a className={`${menuOpen ? styles.blackText : ''}  hover:underline`}>UnitedMasters University</a>
+					<a className={`${menuOpen ? styles.blackText : ''}  hover:underline`}>
+						<strong>UnitedMasters</strong> University
+					</a>
 				</Link>
 			</h2>
 
